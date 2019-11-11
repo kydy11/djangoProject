@@ -1,0 +1,28 @@
+h1, h2{
+    color: rgb(26, 53, 53);
+    text-align: center;
+    margin-top: 1.5em;
+}
+body{
+    background-color: rgb(237, 243, 242);
+}
+p{
+    margin: 10%;
+    margin-top: 0;
+    font-size: 20pt;
+    line-height: 1.5em;
+    padding: 2%;
+
+    border-style: solid;
+    border-width: .1em;
+    border-color: rgb(47, 48, 92);
+}
+div{
+    margin: 10%;
+    p{
+        // margin-top:0;
+        margin-bottom: 2em;
+        font-size: 14pt;
+        border-color: rgb(87, 88, 129);
+    }
+}
