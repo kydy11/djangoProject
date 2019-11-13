@@ -14,8 +14,11 @@
         <p>
             comment thing
         </p>
-        <form title="comment">
-            <input type="text">
+        <form title="comment" action="{% url "add_comment" %}" method="POST">
+            <label>Comment</label><br> <textarea name="Comment"></textarea><br>
+            <label>Name</label><br> <input type="text" name="name" /><br>
+            <button type="submit" id="submitBt">Comment</button>
+            
         </form>
     </div>
 {% endblock content %}
