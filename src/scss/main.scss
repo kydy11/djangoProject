@@ -6,6 +6,29 @@ h1, h2{
 body{
     background-color: rgb(237, 243, 242);
 }
+.comments{
+    li{
+        list-style: none;
+        margin: 10%;
+        margin-top: 0;
+        margin-left: 10%;
+        font-size: 20pt;
+        line-height: 1.5em;
+        padding: 2%;
+        border-style: solid;
+        border-width: .1em;
+        border-color: rgb(47, 48, 92);
+
+        margin-bottom: 2em;
+        font-size: 14pt;
+        border-color: rgb(87, 88, 129);
+        h6{
+            margin: 3em;
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+    }
+}
 p{
     margin: 10%;
     margin-top: 0;
@@ -24,5 +47,28 @@ div{
         margin-bottom: 2em;
         font-size: 14pt;
         border-color: rgb(87, 88, 129);
+    }
+}
+form{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    textarea{
+        width: 75%;
+        height: 50%;
+    }
+    label{
+        text-align: center;
+        font-size: 12pt;
+
+    }
+}
+nav{
+    a{
+        padding: 3em;
+        background-color: rgb(172, 226, 226);
+        text-decoration: none;
+        color: black;
+        text-align: center;
     }
 }

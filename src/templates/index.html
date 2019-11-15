@@ -8,17 +8,16 @@
     </h2>
     <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo, neque vero cumque velit obcaecati ex praesentium quae iure. Illo nesciunt est laborum corporis beatae, suscipit labore consequuntur esse voluptas sequi? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos, a nostrum aspernatur id alias aliquam sint dolores esse incidunt velit, in assumenda dicta ab voluptas consectetur provident mollitia repellendus suscipit? </p>
     <div>
-        <p>
-            comment thing
-        </p>
-        <p>
-            comment thing
-        </p>
-        <form title="comment" action="{% url "add_comment" %}" method="POST">
-            <label>Comment</label><br> <textarea name="Comment"></textarea><br>
-            <label>Name</label><br> <input type="text" name="name" /><br>
-            <button type="submit" id="submitBt">Comment</button>
-            
+        <ul class="comments">
+            {% for comment in comments %}
+                <li>{{comment.comment}} <h6>- {{comment.name}}</h6> </li>
+            {% endfor %}
+        </ul>
+        <form title="comment" action="{% url "index" %}" method="POST">
+            {% csrf_token %}
+            <label>Comment:</label><br> <textarea name="comment"></textarea><br>
+            <label>Name:</label><br> <input type="text" name="name" /><br>
+            <button type="submit" id="submitBt">Add Comment</button>
         </form>
     </div>
 {% endblock content %}
