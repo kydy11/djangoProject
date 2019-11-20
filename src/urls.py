@@ -26,4 +26,5 @@ urlpatterns = [
 
     path('about', TemplateView.as_view(template_name="about.html"), name="about"),
     path('', blog_post, name="index")
+
 ]
