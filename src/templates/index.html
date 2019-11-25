@@ -1,5 +1,15 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
+
+    <ul class="errorlist" style="list-style-type: none">
+      {% for elist in errors %}
+        {% for e in elist %}
+          <li class="alert alert-danger">{{e}}</li>
+        {% endfor %}
+      {% endfor %}
+    </ul>
+
     <h1>Home Page</h1>
     <h2>
         <u>
@@ -16,12 +26,21 @@
         <h3>
             Comment
         </h3>
+
         <form title="comment" action="/comments/add" method="POST">
+
             {% csrf_token %}
-            {% comment %} <label>Comment:</label><br>  {% endcomment %}
-            <textarea name="comment"></textarea><br>
-            <label>Name:</label><br> <input type="text" name="name" /><br>
+            {{form}}
+
+            {% comment %} <b id="form_input">
+                <textarea name="comment"></textarea><br>
+                <label>Name:</label><br> 
+                <input type="text" name="name" /><br>
+            <b> {% endcomment %}
             <button type="submit" id="submitBt">Add Comment</button>
         </form>
     </div>
-{% endblock content %}
+{% endblock %}
+{% block scripts %}
+<scripts src="{% static 'js/style-form.js'%}"> </scripts>
+{% endblock %}

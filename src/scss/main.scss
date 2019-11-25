@@ -52,10 +52,10 @@ form{
     display: flex;
     align-items: center;
     flex-direction: column;
-    textarea{
-        width: 75%;
-        height: 50%;
-    }
+    // textarea{
+    //     width: 75%;
+    //     height: 50%;
+    // }
     label{
         text-align: center;
         font-size: 12pt;
@@ -68,6 +68,7 @@ form{
     border-style: solid;
     background-color: rgb(215, 236, 234);
     padding: 2em;
+    padding-bottom: 1em;
     // border-color: rgb(133, 106, 141);
     border-color: rgb(87, 88, 129);
     font-size: 14pt;
@@ -88,4 +89,13 @@ nav{
 }
 h3{
     text-align: center;
+}
+#form_input{
+    display: flex;
+    flex-direction: column;
+}
+
+.errorlist{
+    text-align: center;
+    color: red;
 }
