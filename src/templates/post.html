@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <ul class="errorlist" style="list-style-type: none">
+      {% for elist in errors %}
+        {% for e in elist %}
+          <li class="alert alert-danger">{{e}}</li>
+        {% endfor %}
+      {% endfor %}
+    </ul>
+    <div id="header">
+        <h1>
+            <u>
+                {{post.title}}
+            </u>
+        </h1>
+        <h3>
+            {{post.subtitle}}
+        </h3>
+        <h4>
+            {{post.author}}
+        </h4>
+    </div>
+    <p> {{post.text}} </p>
+    <div>
+        <ul class="comments">
+            {% for comment in comments %}
+                <li>{{comment.comment}} <h6>- {{comment.name}}</h6> </li>
+            {% endfor %}
+        </ul>
+        <h3>
+            Comment
+        </h3>
+
+        <form title="comment" action="/comments/add" method="POST">
+
+            {% csrf_token %}
+            {{form}}
+
+            {% comment %} <b id="form_input">
+                <textarea name="comment"></textarea><br>
+                <label>Name:</label><br> 
+                <input type="text" name="name" /><br>
+            <b> {% endcomment %}
+            <button type="submit" id="submitBt">Add Comment</button>
+        </form>
+    </div>
+{% endblock %}
+{% block scripts %}
+<scripts src="{% static 'js/style-form.js'%}"> </scripts>
+{% endblock %}
