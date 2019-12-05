@@ -9,7 +9,7 @@ import pytz
 
 # Django Rest Framework for seeing the JSON
 @api_view(['POST'])
-def add_comment(request, post_id):
+def add_comment(request):
 
   # Create a form instance and populate it with data from the request:
   form = CommentForm(request.POST)
@@ -30,8 +30,8 @@ def add_comment(request, post_id):
       comment_errors[key] = val[0].messages
     # Cache the errors
     request.session["comment_errors"] = comment_errors
-
-  return redirect('/post/<int:post_id>')
+  
+  return redirect('/post/'+request.POST['_post'])
 
 # Display the post
 def blog_post(request, post_id):

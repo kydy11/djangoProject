@@ -32,10 +32,10 @@
         <h3>
             Comment
         </h3>
-
         <form title="comment" action="/comments/add" method="POST">
 
             {% csrf_token %}
+            <input type="hidden" name="_post" value={{post.id}}>
             {{form}}
 
             {% comment %} <b id="form_input">
