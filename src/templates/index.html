@@ -2,44 +2,12 @@
 {% load static %}
 {% block content %}
 
-    <ul class="errorlist" style="list-style-type: none">
-      {% for elist in errors %}
-        {% for e in elist %}
-          <li class="alert alert-danger">{{e}}</li>
+    <h1> Posts: </h1>
+    <ul>
+        {% for post in posts %}
+            <li> <a href="post/{{post.id}}"> {{post.title}} </a></li>
         {% endfor %}
-      {% endfor %}
     </ul>
-
-    <h1>Home Page</h1>
-    <h2>
-        <u>
-            This Odd Thing
-        </u>
-    </h2>
-    <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo, neque vero cumque velit obcaecati ex praesentium quae iure. Illo nesciunt est laborum corporis beatae, suscipit labore consequuntur esse voluptas sequi? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos, a nostrum aspernatur id alias aliquam sint dolores esse incidunt velit, in assumenda dicta ab voluptas consectetur provident mollitia repellendus suscipit? </p>
-    <div>
-        <ul class="comments">
-            {% for comment in comments %}
-                <li>{{comment.comment}} <h6>- {{comment.name}}</h6> </li>
-            {% endfor %}
-        </ul>
-        <h3>
-            Comment
-        </h3>
-
-        <form title="comment" action="/comments/add" method="POST">
-
-            {% csrf_token %}
-            {{form}}
-
-            {% comment %} <b id="form_input">
-                <textarea name="comment"></textarea><br>
-                <label>Name:</label><br> 
-                <input type="text" name="name" /><br>
-            <b> {% endcomment %}
-            <button type="submit" id="submitBt">Add Comment</button>
-        </form>
-    </div>
 {% endblock %}
 {% block scripts %}
 <scripts src="{% static 'js/style-form.js'%}"> </scripts>

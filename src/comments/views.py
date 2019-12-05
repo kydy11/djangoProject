@@ -9,7 +9,7 @@ import pytz
 
 # Django Rest Framework for seeing the JSON
 @api_view(['POST'])
-def add_comment(request):
+def add_comment(request, post_id):
 
   # Create a form instance and populate it with data from the request:
   form = CommentForm(request.POST)
@@ -31,10 +31,10 @@ def add_comment(request):
     # Cache the errors
     request.session["comment_errors"] = comment_errors
 
-  return redirect('/')
+  return redirect('/post/<int:post_id>')
 
 # Display the post
-def blog_post(request):
+def blog_post(request, post_id):
   form = CommentForm()
   form_errors = {}
   try:
@@ -46,10 +46,13 @@ def blog_post(request):
     pass
 
   # Get the post
-  post =Post.objects.filter(id=1).get()
+  post =Post.objects.filter(id=post_id).get()
+
+  # url = post.title.replace(" ", "_")
+  # url = post.id
   
   # Get all the comments
-  db_comments = Comment.objects.filter(_post=1)
+  db_comments = Comment.objects.filter(_post=post_id)
   comments = []
   # Just send the day of the comment, not the time
   for comment in db_comments.reverse():
@@ -67,6 +70,24 @@ def blog_post(request):
                   'comments': comments, 
                   'errors': form_errors.values(),
                   'form': form, 
+                  'id':post_id,
                   'num_comments': len(comments)
                 })
+
+def post_list(request):
+  db_posts = Post.objects.all()
+  posts = []
+
+  for post in db_posts:
+    posts.append({
+      'title': post.title,
+      'id': post.id
+    })
+  
+  return render(request,
+                template_name="index.html",
+                context={
+                  'posts': posts
+                })
+
 
