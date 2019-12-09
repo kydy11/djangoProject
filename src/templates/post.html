@@ -23,12 +23,13 @@
         </h4>
     </div>
     <p> {{post.text}} </p>
-    <div>
-        <ul class="comments">
-            {% for comment in comments %}
-                <li>{{comment.comment}} <h6>- {{comment.name}}</h6> </li>
-            {% endfor %}
-        </ul>
+
+    <ul class="comments">
+        {% for comment in comments %}
+            <li>{{comment.comment}} <h6>- {{comment.name}}</h6> </li>
+        {% endfor %}
+    </ul>
+    <div id="div-add">
         <h3>
             Comment
         </h3>
