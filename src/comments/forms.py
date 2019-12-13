@@ -7,5 +7,5 @@ class CommentForm(forms.Form):
     def clean(self):
         cleaned_data = super().clean()
         name = cleaned_data.get("name")
-        if "h" in name.lower():
-            raise forms.ValidationError("don't use h")
+        # if "h" in name.lower():
+        #     raise forms.ValidationError("don't use h")

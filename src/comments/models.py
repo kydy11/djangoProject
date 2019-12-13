@@ -7,7 +7,7 @@ class Post(models.Model):
     author = models.CharField(max_length=100)
     text = models.TextField(max_length=50000000000000000000)
 
-# Create your models here.
+
 class Comment(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     comment = models.TextField(max_length = 10000000000000000000)
